@@ -1,0 +1,53 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("XHub | 1+ speed every click", "Ocean")
+
+local Tab = Window:NewTab("Main")
+
+local Section = Tab:NewSection("Main")
+
+Section:NewToggle("Auto Farm", "farming", function(state)
+    if state then
+        _G.auto = true
+    
+    
+    while _G.auto do
+game:GetService("ReplicatedStorage"):WaitForChild("IncreaseSpeed"):FireServer()
+wait(0.1)
+end
+    else
+        _G.auto = false
+    
+    
+    while _G.auto do
+game:GetService("ReplicatedStorage"):WaitForChild("IncreaseSpeed"):FireServer()
+wait(0.1)
+end
+    end
+end)
+
+Section:NewButton("infinite yield", "fe admin command", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+
+Section:NewButton("remote spy", "rspy", function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Remote-spy-14483"))()
+end)
+
+Section:NewSlider("WalkSpeed", "Change WalkSpeed", 350, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+Section:NewSlider("JumpPower", "Change Jump", 350, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+Section:NewLabel("toggle ui with keybinds")
+
+Section:NewKeybind("ui toggle", "Click F", Enum.KeyCode.F, function()
+	Library:ToggleUI()
+end)
+
+local Tab = Window:NewTab("Credits")
+
+local Section = Tab:NewSection("Made by Ff india")
